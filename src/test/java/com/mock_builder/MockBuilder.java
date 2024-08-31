@@ -9,5 +9,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD,ElementType.PARAMETER})
 public @interface MockBuilder {
 
-    //array params ...
+    String[] setTrue() default {};
+
+    String[] methodStubs() default {};
 }
