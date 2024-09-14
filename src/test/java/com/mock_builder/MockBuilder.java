@@ -8,8 +8,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
 public @interface MockBuilder {
-
-    String[] setTrue() default {};
-
-    String[] methodStubs() default {};
+    String builderMethodName() default "";
 }
