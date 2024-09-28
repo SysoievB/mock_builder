@@ -28,7 +28,7 @@ class MockBuilderTest {
         if (nonNull(age))
             given(car.getName()).willReturn(name);
         if (nonNull(car))
-            given(car.getName()).willReturn(name);
+            given(car.getEngine()).willReturn(engine);
         return car;
     }
 
