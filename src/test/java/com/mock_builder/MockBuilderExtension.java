@@ -13,26 +13,16 @@ public class MockBuilderExtension implements BeforeEachCallback {
         Object testInstance = context.getRequiredTestInstance();
         Class<?> testClass = testInstance.getClass();
 
-        /*for (Method method : testClass.getDeclaredMethods()) {
+        for (Method method : testClass.getDeclaredMethods()) {
             if (method.isAnnotationPresent(MockBuilder.class)) {
-                //set during runtime
-                MockBuilder annotation = method.getAnnotation(MockBuilder.class);
-                String builderMethodName = annotation.builderMethodName();
-                //builder set during compile-time(SOURCE)
-                Builder builder = method.getAnnotation(Builder.class);
-                String builderMethodNameLombok = builder.builderMethodName();
-
-                if (!builderMethodName.isEmpty()) {
-                    builderMethodNameLombok = builderMethodName;
-                    invokeBuilderMethod(testInstance, builderMethodNameLombok);
+                MockBuilder mockBuilderAnnotation = method.getAnnotation(MockBuilder.class);
+                String builderMethodName = mockBuilderAnnotation.builderMethodName();
+                Builder builderAnnotation = method.getAnnotation(Builder.class);
+                String builderMethodNameLombok = builderAnnotation.builderMethodName();
+                if (!builderMethodName.isBlank()) {
+                    //todo  to set value from builderMethodName to builderMethodNameLombok here
                 }
             }
-        }*/
-    }
-
-    private void invokeBuilderMethod(Object testInstance, String builderMethodName) throws Exception {
-        Method builderMethod = testInstance.getClass().getMethod(builderMethodName);
-        builderMethod.setAccessible(true);
-        builderMethod.invoke(testInstance);
+        }
     }
 }

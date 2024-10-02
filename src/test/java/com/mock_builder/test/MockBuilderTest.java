@@ -16,11 +16,12 @@ class MockBuilderTest {
 
     @Test
     void testMyService() {
-        car().name("BMW").age(1).engine("V6").build();
+        val car = car().name("BMW").age(1).engine("V6").build();
     }
 
-    @Builder(builderMethodName = "car")
-    @MockBuilder(builderMethodName = "car")
+    //@Builder(builderMethodName = "car")
+    //@Mock
+    @MockBuilder(builderMethodName = "car")//== @Builder(builderMethodName = "car")
     private Car getCar(String name, Integer age, String engine) {
         val car = mock(Car.class);
         if (nonNull(car))
