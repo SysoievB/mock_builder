@@ -13,7 +13,7 @@ public class MockBuilderExtension implements BeforeEachCallback {
         Object testInstance = context.getRequiredTestInstance();
         Class<?> testClass = testInstance.getClass();
 
-        for (Method method : testClass.getDeclaredMethods()) {
+        /*for (Method method : testClass.getDeclaredMethods()) {
             if (method.isAnnotationPresent(MockBuilder.class)) {
                 //set during runtime
                 MockBuilder annotation = method.getAnnotation(MockBuilder.class);
@@ -27,7 +27,7 @@ public class MockBuilderExtension implements BeforeEachCallback {
                     invokeBuilderMethod(testInstance, builderMethodNameLombok);
                 }
             }
-        }
+        }*/
     }
 
     private void invokeBuilderMethod(Object testInstance, String builderMethodName) throws Exception {
