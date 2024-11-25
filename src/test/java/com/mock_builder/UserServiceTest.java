@@ -15,11 +15,11 @@ import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-@MockitoSettings(strictness = Strictness.LENIENT)
+//@MockitoSettings(strictness = Strictness.LENIENT)
 class UserServiceTest {
     @InjectMocks
     UserService service;
