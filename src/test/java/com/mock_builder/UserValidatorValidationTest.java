@@ -16,10 +16,10 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
-public class UserServiceValidationTest {
+public class UserValidatorValidationTest {
 
     @InjectMocks
-    private UserService userService;
+    private UserValidator userValidator;
 
     @Test
     void shouldPassValidationForValidUsers() {
@@ -29,7 +29,7 @@ public class UserServiceValidationTest {
                 user().name("Rob").surname("Dilan").country("Czech Republic").age(18).build()
         );
 
-        assertThatCode(() -> userService.validateUsers(users))
+        assertThatCode(() -> userValidator.validateUsers(users))
                 .doesNotThrowAnyException();
     }
 
@@ -41,7 +41,7 @@ public class UserServiceValidationTest {
                 user().build()
         );
 
-        assertThatThrownBy(() -> userService.validateUsers(users))
+        assertThatThrownBy(() -> userValidator.validateUsers(users))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("All users must be adults age >= 18");
     }
@@ -54,7 +54,7 @@ public class UserServiceValidationTest {
                 user().age(21).build()
         );
 
-        assertThatThrownBy(() -> userService.validateUsers(users))
+        assertThatThrownBy(() -> userValidator.validateUsers(users))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("User name and surname must start with an uppercase letter");
     }
@@ -67,7 +67,7 @@ public class UserServiceValidationTest {
                 user().age(21).build()
         );
 
-        assertThatThrownBy(() -> userService.validateUsers(users))
+        assertThatThrownBy(() -> userValidator.validateUsers(users))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("User name and surname must start with an uppercase letter");
     }
@@ -80,7 +80,7 @@ public class UserServiceValidationTest {
                 user().name("Rob").surname("Dilan").age(21).build()
         );
 
-        assertThatThrownBy(() -> userService.validateUsers(users))
+        assertThatThrownBy(() -> userValidator.validateUsers(users))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("All users must be from a European country");
     }
